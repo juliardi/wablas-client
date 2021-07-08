@@ -2,6 +2,7 @@
     "name": "juliardi/wablas-client",
     "description": "Library for sending WhatsApp message through Wablas (wablas.com)",
     "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "Juliardi",
