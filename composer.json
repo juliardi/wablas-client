@@ -1,0 +1,23 @@
+{
+    "name": "juliardi/wablas-client",
+    "description": "Library for sending WhatsApp message through Wablas (wablas.com)",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Juliardi",
+            "email": "ardi93@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.3.0",
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Juliardi\\Wablas\\": "src/"
+        }
+    },
+    "require-dev": {
+        "nette/tester": "^2.3"
+    }
+}
