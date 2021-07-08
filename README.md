@@ -1,5 +1,5 @@
 ### Wablas Client
-Library for sending WhatsApp message through Wablas (wablas.com)
+Library for sending WhatsApp message through Wablas (wablas.com). Please register at [Wablas](https://wablas.com/) to get your token.
 
 ### Installation
 ```
@@ -7,7 +7,6 @@ $ composer require juliardi/wablas-client
 ```
 
 ### Usage
-Please register at [Wablas](https://wablas.com/) to get your token.
 
 ```php
 
