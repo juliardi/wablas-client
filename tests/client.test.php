@@ -7,8 +7,10 @@ use Juliardi\Wablas\Client;
 
 $client = new Client('wablas-token');
 
-Assert::false($client->sendMessage('08098999', 'halo'));
-Assert::same('Invalid phone number.', $client->getLastError());
+$func = function() use ($client) {
+	$client->sendMessage('08098999', 'halo');
+};
+
+Assert::exception($func, \Exception::class, 'Invalid phone number.');
 
 Assert::true($client->sendMessage('080989898989', 'testing phase'));
-Assert::same('', $client->getLastError());
