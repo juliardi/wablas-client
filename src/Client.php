@@ -23,6 +23,12 @@ class Client {
 	private $token;
 
 	/**
+	 * Latest response from Wablas
+	 * @var mixed
+	 */
+	private $last_response;
+
+	/**
 	 * @param string $token    	API Token from Wablas
 	 * @param string $base_url	Optional. To set Wablas URL. If empty, it will use `https://console.wablas.com//api/send-message`
 	 * as the default URL.
@@ -31,10 +37,14 @@ class Client {
 		$this->base_url = $base_url;
 
 		if(empty($base_url)) {
-			$this->base_url = 'https://console.wablas.com//api/send-message';
+			$this->base_url = 'https://console.wablas.com/api/send-message';
 		}
 
 		$this->token = $token;
+	}
+
+	public function getLastResponse() {
+		return $this->last_response;
 	}
 
 	/**
@@ -68,12 +78,17 @@ class Client {
 
         if ($response) {
         	$result = json_decode($response, true);
+
+        	$this->last_response = $result;
+
+        	if ($result && isset($result['status'])) {
+	            if($result['status'] == true) {
+	            	return true;
+	            } else {
+	                throw new Exception($result['message']);
+	            }
+        	}
         
-            if($result['status'] == true) {
-            	return true;
-            } else {
-                throw new Exception($result['message']);
-            }
         } else {
         	throw new Exception('curl error : ' . curl_error($curlHandle));
         }

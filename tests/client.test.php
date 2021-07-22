@@ -5,7 +5,9 @@ require_once dirname(__DIR__) . '/vendor/autoload.php';
 use Tester\Assert;
 use Juliardi\Wablas\Client;
 
-$client = new Client('wablas-token');
+Tester\Environment::setup();
+
+$client = new Client('wablas-token', 'https://us.wablas.com/api/send-message');
 
 $func = function() use ($client) {
 	$client->sendMessage('08098999', 'halo');
